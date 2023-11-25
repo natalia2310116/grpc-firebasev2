@@ -18,8 +18,8 @@ class GreeterServicer(prototres_pb2_grpc.GreeterServicer):
 
 def serve():
     server= grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    prototres_pb2_grpc.add_GreeterService_to_servicer_to_server(GreeterServicer(),server)
+    prototres_pb2_grpc.add_GreeterServicer_to_server(GreeterServicer(), server)
     server.add_insecure_port("localhost:50051")
-    server.star()
+    server.start()
     server.wait_for_termination()
 
